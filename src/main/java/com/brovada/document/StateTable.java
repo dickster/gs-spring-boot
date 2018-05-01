@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class StateTable extends HashMap<String, StateTransitions> {
 
-    private String initialState;
+  private String initialState;
 
   public StateTable() {
       
@@ -13,7 +13,7 @@ public class StateTable extends HashMap<String, StateTransitions> {
 
   public StateTable withState(@Nonnull String state, @Nonnull StateTransitions transitions) {
       if (initialState==null) {
-          initialState = state;
+          withInitialState(state);
       }
       // assert doesn't exist.
       put(state, transitions);
@@ -51,8 +51,7 @@ public class StateTable extends HashMap<String, StateTransitions> {
 
 
   public String getInitialState() {
-      // TODO : get the first state in the table (chronologically - not alphabetically)
-      return "A";
+      return initialState;
   }
 
 

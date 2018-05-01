@@ -2,7 +2,7 @@ package com.brovada.document;
 
 import java.util.HashMap;
 
-public class Actions extends HashMap<String, Actions.ActionService> {
+public class Actions extends HashMap<String, ActionService> {
 
     // e.g.    "BIND" --> 'bindService'
 
@@ -23,18 +23,6 @@ public class Actions extends HashMap<String, Actions.ActionService> {
     public Actions addMicroServiceAction(String action, String service) {
         put(action, new ActionService(service, "micro"));
         return this;
-    }
-
-    
-    static class ActionService {
-        private String name;
-        private String type;
-
-        public ActionService(String name, String type) {
-            this.name = name;
-        }
-
-        String getName() { return name; }
     }
 
 

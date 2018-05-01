@@ -8,6 +8,7 @@ public class DefaultJobConfig extends JobConfig {
 
     public DefaultJobConfig() {
         super();
+        setName("auto");
         setStateTable(new StateTable()
                 .withState("A",
                         new StateTransitions()
@@ -20,6 +21,7 @@ public class DefaultJobConfig extends JobConfig {
                 .withState("C",
                         new StateTransitions() .withTransition("200", "A")
                     )
+                .withInitialState("A")
 
         )  ;
     }

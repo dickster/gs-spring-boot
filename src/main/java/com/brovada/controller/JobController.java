@@ -1,6 +1,7 @@
 package com.brovada.controller;
 
 import com.brovada.document.Job;
+import com.brovada.document.JobState;
 import com.brovada.document.JobWithConfig;
 import com.brovada.service.JobService;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,11 @@ public class JobController {
     @ResponseBody
     public void action( @PathVariable("id") String id, @RequestParam(value="action", defaultValue="noAction") String action, @RequestBody Job job) {
         // get job.
+        JobState currentState = job.getState();
+        currentState.getName();
+        //A.NEXT = blah.      [NEXT validate] which button?   .: need to resolve which config has the goods? why not just put in on url?
+        //   PATCH ./job/123?action='validate'&trigger='<label>'    {jobData}
+
         // get action based on jobs current state.
         // resolve service(s)                            ,
         // iterate { result.merge( service(job) ); }

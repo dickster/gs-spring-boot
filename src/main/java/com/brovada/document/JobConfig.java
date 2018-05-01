@@ -5,10 +5,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Locale;
 
+
+
 @Document
 public class JobConfig implements VersionedDocument {
     @Id
     public String id;
+    
+    public String name;
 
    private Version version = new Version();
     
@@ -29,6 +33,7 @@ public class JobConfig implements VersionedDocument {
    private String numberFormat;
 
    private Actions actions;
+
 
     public void setId(String id) {
         this.id = id;
@@ -112,6 +117,13 @@ public class JobConfig implements VersionedDocument {
     // date formatting, currency formatting, is this driven by Locale?
 
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public Version getVersion() {

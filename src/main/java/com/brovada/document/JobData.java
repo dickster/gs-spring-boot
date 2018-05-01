@@ -4,6 +4,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+// @Version document.  pre-save.  update patch version.
+// version = version.next();
+// update if doesn't exist.
+// stores a string as well as 3 digits version.
+
 public class JobData {
 
     private Map<String, Object> values;
@@ -12,11 +17,10 @@ public class JobData {
     private String firstName;
     private String lastName;
     private Date effectiveDate;
-    //  etc....
+    //  etc...
 //    private Address address;
 //    private Email email;
 //    private PhoneNumber phone;
-
 
     public JobData(Map<String,Object> values) {
         this.values = values;
@@ -25,7 +29,7 @@ public class JobData {
 
     public JobData() {
         this.values = new HashMap<String,Object>();
-        convertAccordingToConfiguration();
+        convertAccordingToConfiguration();               
     }
 
     private void convertAccordingToConfiguration() {

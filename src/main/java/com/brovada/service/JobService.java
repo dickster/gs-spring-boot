@@ -16,11 +16,42 @@ import java.util.Optional;
 import static com.brovada.document.JobBuilder.aJob;
 import static com.brovada.document.JobWithConfigBuilder.aJobWithConfig;
 
+// POST ../job/123/validation    // automatically updates job data  (equivalent to PUT : job/123/data  {} )
+
+
+
+//  POST ../job/123/validation   {returns whatever...client responsible for parsing and running workflow).
+//  POST ../job/123/foobar       if changes policy, then return a link to new data.
+//  PUT ../job/123               saves newest version.  (for drafts)
+//
+
+//actionConfig = {remote:
+//  {host:'www.insuranceCo'
+//    url:someResource
+//    parameters:[{name:'color', source:'policy.insured.carColour'}, ...]
+//    mapping:{ 'foo':'bar'  etc.... source:foo --> dest:bar   https://www.npmjs.com/package/object-mapper }
+//    name:'RADAR'  // some unique name. at least unique within form/state.  will set pending.RADAR=true.
+//    resultMapping: { 'externalCode':'internalCode' ...     to translate results into standard results.
+//   }
+
+//  local:{name:validation    // ==> ./job/{id}/validation
+//    params: [as above]
+//    mapping: [as above]
+//    name: [as above]
+
+// client: {
+//  result: {http:200, code:0}    or result : 0   or result: {code:0}
+//  wrap it up in an immediate promise.
+// }
+
+
 
 // NOTE : action buttons need to have some sort of timer implemented.  spinner applied to button/overlay/
-// or go to a temporary screen with msgs.   need to configure a screen that waits on service.
-// polling button - waits on condition.   e.g. data.calculating=true --> false.
-
+// or go to a temporary screen with msgs.   need to configure a screen that waits on service
+// polling button - waits on condition.   e.g. data.calculating=true --> false
+// .: action button creates state = inflight.<action> = true.  on complete pending.<action> = false
+// .: UI can be designed with v-if's   (how?  .: a section/form must be able to have configurable bizLogic)
+// can have a parameterized (templated) progress page.   relies on inflight.<action> and calls workflow(configuredStatus)
 
 //  {
 //      job: {  config & settings }   immutable
@@ -33,7 +64,7 @@ import static com.brovada.document.JobWithConfigBuilder.aJobWithConfig;
 // create job =
 //   load config.
 //   load translations
-//    translate
+//   translate
 //   load settings based on locale (date format etc..)
 //   load data keys     e.g.   keys['cities'] = 'v6'   (or just 6)
 //   load policy   (latest version)
@@ -73,6 +104,8 @@ public class JobService {
 
     // PUT ./job/185/policyData {data:...} after creation to set data.
     // or include the policyData ID in the request.
+    
+    // maybe PUT ./job/273/work?trigger=NEXT&name=validate  {job}    // create a work    responds with 200:   new url to job.  (or requires refresh flag)
 
     private JobWithConfig create(String jobName, Version version, Locale locale) {
         Optional<JobConfig> result = jobConfigRepository.findById(jobName);

@@ -10,9 +10,36 @@ import java.util.Map;
 
 public class JobState {
     @Nonnull
-    String currentState;
+    String name;
     @Nullable
     List<StateMsg> msgs = Lists.newArrayList();
     @Nullable
     Map<String,String> data = Maps.newHashMap();
+
+    @Nonnull
+    public String getName() {
+        return name;
+    }
+
+    public void setName(@Nonnull String name) {
+        this.name = name;
+    }
+
+    @Nullable
+    public List<StateMsg> getMsgs() {
+        return msgs;
+    }
+
+    public void setMsgs(@Nullable List<StateMsg> msgs) {
+        this.msgs = msgs;
+    }
+
+    @Nullable
+    public Map<String, String> getData() {
+        return data;
+    }
+
+    public void setData(@Nullable Map<String, String> data) {
+        this.data = data;
+    }
 }

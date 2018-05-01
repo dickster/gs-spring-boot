@@ -1,5 +1,6 @@
 package com.brovada.document;
 
+// need to create lifecycle stuff to handle this.  pre-save will inc/set version #.   (it will be null on first call).
 public class Version {
     private int major;
     private int minor;

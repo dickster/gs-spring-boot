@@ -37,7 +37,6 @@ public final class JobBuilder {
         Job job = new Job();
         job.setConfigRef(configRef);
         job.setState(state);
-        job.setData(data);
         return job;
     }
 }
