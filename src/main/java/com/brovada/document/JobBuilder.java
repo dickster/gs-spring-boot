@@ -4,7 +4,7 @@ public final class JobBuilder {
     private DocumentReference<JobConfig> configRef; // a reference. not included.
     private JobState state;
     private JobData data;
-    private Version version;
+    private VersionFoo version;
 
     private JobBuilder() {
     }
@@ -28,14 +28,14 @@ public final class JobBuilder {
         return this;
     }
 
-    public JobBuilder withVersion(Version version) {
+    public JobBuilder withVersion(VersionFoo version) {
         this.version = version;
         return this;
     }
 
     public Job build() {
         Job job = new Job();
-        job.setConfigRef(configRef);
+//        job.setConfigRef(configRef);
         job.setState(state);
         return job;
     }

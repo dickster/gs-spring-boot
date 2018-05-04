@@ -2,7 +2,7 @@ package com.brovada.document;
 
 public interface VersionedDocument {
 
-    public Version getVersion();
+    public VersionFoo getVersion();
     // add auditing. user,  modified.
     public String getId();
     

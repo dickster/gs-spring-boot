@@ -20,7 +20,7 @@ public interface ComponentConfig {
 
     default Optional<Expression> getCssClass() { return Optional.empty(); };
 
-    default Optional<Map<String,PropertyValue>> getProperties()  { return Optional.empty(); }    // e.g. disabled --> policy.country=='CA' && policy.province=='ON'
+    default Optional<Map<String,PropertyValue>> getAttributes()  { return Optional.empty(); }    // e.g. disabled --> policy.country=='CA' && policy.province=='ON'
 
     default Optional<TranslationTable> getTranslations() { return Optional.empty(); }
 

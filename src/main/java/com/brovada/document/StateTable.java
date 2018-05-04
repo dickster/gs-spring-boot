@@ -1,9 +1,19 @@
 package com.brovada.document;
 
+import com.google.common.collect.Lists;
+
 import javax.annotation.Nonnull;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class StateTable extends HashMap<String, StateTransitions> {
+
+    //stateTable.get("B") = {-1->E, 200->C, 201->D}
+    // eg. A[0] => B
+    //     B[-1] => E
+    //     B[200] => C
+    //     B[201] => D
+    //     C[0] => D
 
   private String initialState;
 
@@ -12,11 +22,11 @@ public class StateTable extends HashMap<String, StateTransitions> {
   }
 
   public StateTable withState(@Nonnull String state, @Nonnull StateTransitions transitions) {
+      // assert doesn't exist.
+      put(state, transitions);
       if (initialState==null) {
           withInitialState(state);
       }
-      // assert doesn't exist.
-      put(state, transitions);
        // add flag to create states referenced in transitions. 
       return this;
   }
@@ -54,5 +64,19 @@ public class StateTable extends HashMap<String, StateTransitions> {
       return initialState;
   }
 
+
+  public boolean isTerminalState(String state) {
+      Collection<String> transitions = getTransitions(state);
+      return transitions.size()==0;
+  }
+
+    private Collection<String> getTransitions(String state) {
+      for (String s:keySet()) {
+          if (state==s) {
+            return get(s).getAllPossibleStates();
+          }
+      }
+      return Lists.newArrayList();
+    }
 
 }

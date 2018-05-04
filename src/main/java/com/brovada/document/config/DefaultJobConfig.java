@@ -12,15 +12,21 @@ public class DefaultJobConfig extends JobConfig {
         setStateTable(new StateTable()
                 .withState("A",
                         new StateTransitions()
-                                .withTransition("200", "B")
-                                .withTransition("404", "C")
+                                .withTransition(200, "B")
+                                .withTransition(400,499, "C")
+                                .withCatchAllTransition("E")
                         )
                 .withState("B",
-                        new StateTransitions() .withTransition("200", "A")
-                    )                                                                
-                .withState("C",
-                        new StateTransitions() .withTransition("200", "A")
+                        new StateTransitions()
+                                .withTransition(11, "C")
                     )
+                .withState("C",
+                        new StateTransitions() 
+                                .withTransition(33, "A")
+                    )
+                .withState("E",
+                    new StateTransitions()
+                            .withTransition(-1, "A"))
                 .withInitialState("A")
 
         )  ;

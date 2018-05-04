@@ -3,10 +3,6 @@ package com.brovada.document;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.http.HttpStatus;
 
-import java.util.stream.IntStream;
-
-import static java.util.stream.IntStream.range;
-
 public class EventCode {
 
     public static EventCode forHttpStatus = new EventCode(HttpStatus.OK);
@@ -23,20 +19,32 @@ public class EventCode {
         this.code = status.value();
     }
 
+    public int getCode() {
+        return code;
+    }
+
     public boolean matches(int code) {
         return this.code == code;
     }
 
+    public boolean matches(EventCode ec) {
+        return matches(ec.getCode());
+    }
+
     public static class EventCodeRange extends EventCode {
 
-        final IntStream range;
+
+        private final int start;
+        private final int end;
+
         public EventCodeRange(int start, int end) {
-            this.range = range(start,end);
+            this.start = start;
+            this.end = end;
         }
 
         @Override
         public boolean matches(int code) {
-            return range.anyMatch(c->code==c);
+            return code>=start && code<=end;
         }
     }
 

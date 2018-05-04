@@ -6,7 +6,7 @@ import java.util.Optional;
 public abstract class InputConfig<T> implements ComponentConfig, HasValidation {
 
     private final ComponentType type;
-    private String label;
+    private @Translatable String label;
     private String bind;
 
 

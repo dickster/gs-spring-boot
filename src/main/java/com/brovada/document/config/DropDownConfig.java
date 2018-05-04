@@ -15,7 +15,7 @@ public class DropDownConfig<T> extends InputConfig<T> implements HasValidation {
         super(ComponentType.DROP_DOWN, formControlName);
     }
 
-    public DropDownConfig withInlineChoices(Map<T,Object> choices) {
+    public DropDownConfig withInlineChoices(Map<T,String> choices) {
         this.choiceProvider = new InlineChoiceProvider<T>().withChoices(choices);
         return this;
     }

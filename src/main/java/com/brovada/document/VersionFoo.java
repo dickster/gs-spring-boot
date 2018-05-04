@@ -1,24 +1,25 @@
 package com.brovada.document;
 
 // need to create lifecycle stuff to handle this.  pre-save will inc/set version #.   (it will be null on first call).
-public class Version {
+@Deprecated 
+public class VersionFoo {
     private int major;
     private int minor;
     private int patch;
 
-    public Version() {
+    public VersionFoo() {
         setMajor(1);
     }
 
-    public Version(int major) {
+    public VersionFoo(int major) {
         setMajor(major);
     }
 
-    public Version(int major, int minor) {
+    public VersionFoo(int major, int minor) {
         setMajor(major);
     }
 
-    public Version(int major, int minor, int patch) {
+    public VersionFoo(int major, int minor, int patch) {
         setMajor(major);
     }
 

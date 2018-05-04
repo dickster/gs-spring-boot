@@ -26,7 +26,7 @@ public class StateRouting extends HashMap<String, StateRouting.Route> {
        public static class FormConfigRoute implements Route {
 
            private String docId;
-           private Version version;
+           private VersionFoo version;
 
 
        }

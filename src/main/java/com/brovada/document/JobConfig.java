@@ -8,14 +8,13 @@ import java.util.Locale;
 
 
 @Document
-public class JobConfig implements VersionedDocument {
+public class JobConfig {
     @Id
     public String id;
     
     public String name;
 
-   private Version version = new Version();
-    
+
    private StateTable stateTable = new StateTable();
 
    private StateRouting routing = new StateRouting();
@@ -37,10 +36,6 @@ public class JobConfig implements VersionedDocument {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public void setVersion(Version version) {
-        this.version = version;
     }
 
     public StateTable getStateTable() {
@@ -124,12 +119,7 @@ public class JobConfig implements VersionedDocument {
     public void setName(String name) {
         this.name = name;
     }
-
-    @Override
-    public Version getVersion() {
-        return version;
-    }
-
+    
     public String getId() {
         return id;
     }
@@ -147,7 +137,6 @@ public class JobConfig implements VersionedDocument {
                 ", stateTable=" + stateTable +
                 ", timeFormat='" + timeFormat + '\'' +
                 ", translations=" + translations +
-                ", version=" + version +
                 '}';
     }
 }

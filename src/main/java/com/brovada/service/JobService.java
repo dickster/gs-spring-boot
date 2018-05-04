@@ -3,9 +3,8 @@ package com.brovada.service;
 import com.brovada.document.DocumentReference;
 import com.brovada.document.JobConfig;
 import com.brovada.document.JobData;
-import com.brovada.document.JobState;
 import com.brovada.document.JobWithConfig;
-import com.brovada.document.Version;
+import com.brovada.document.VersionFoo;
 import com.brovada.repository.JobConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -107,7 +106,7 @@ public class JobService {
     
     // maybe PUT ./job/273/work?trigger=NEXT&name=validate  {job}    // create a work    responds with 200:   new url to job.  (or requires refresh flag)
 
-    private JobWithConfig create(String jobName, Version version, Locale locale) {
+    private JobWithConfig create(String jobName, VersionFoo version, Locale locale) {
         Optional<JobConfig> result = jobConfigRepository.findById(jobName);
 
         JobConfig jobConfig = result
@@ -121,7 +120,6 @@ public class JobService {
                 .withJob(aJob()
                         .withConfigRef(new DocumentReference(jobConfig.getId()))
                         .withData(new JobData())
-                        .withState(new JobState())
                         .build())
                 .build();
     }

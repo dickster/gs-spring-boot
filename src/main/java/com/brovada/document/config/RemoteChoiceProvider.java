@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 
 public class RemoteChoiceProvider<T> implements ChoiceProvider<T> {
 
+    // TODO ; add optional language/locale parameter.
     private String url;
 
     /*package protected constructor and methods*/

@@ -4,7 +4,7 @@ import java.util.Locale;
 
 public final class JobConfigBuilder {
     public String id;
-    private Version version;
+    private VersionFoo version;
     private StateTable stateTable;
     private StateRouting routing;
     private TranslationTable translations;
@@ -71,7 +71,6 @@ public final class JobConfigBuilder {
     public JobConfig build() {
         JobConfig jobConfig = new JobConfig();
         jobConfig.setId(id);
-        jobConfig.setVersion(version);
         jobConfig.setStateTable(stateTable);
         jobConfig.setRouting(routing);
         jobConfig.setTranslations(translations);

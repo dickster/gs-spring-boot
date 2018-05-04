@@ -7,7 +7,7 @@ import java.util.List;
 // e.g. /validate   (internal)
 //      www.fooBar.com/comments    (external)
 //      tickets   (internal service discovery lookup id)
-//      
+
 
 public class ActionService {
     // currently supports only rest.   TODO : add any required config for soap/thrift.
